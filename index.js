@@ -50,7 +50,7 @@ var upload = multer({
 // mypic is the name of file attribute
 }).single("mypic");       
   
-app.get("/",function(req,res){
+app.get("/upload_test",function(req,res){
     res.render("test");
 })
     
