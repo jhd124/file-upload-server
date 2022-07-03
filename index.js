@@ -48,7 +48,7 @@ var upload = multer({
     //   } 
   
 // mypic is the name of file attribute
-}).single("mypic");       
+}).single("file");       
   
 app.get("/upload_test",function(req,res){
     res.render("test");
@@ -58,8 +58,8 @@ app.post("/upload_file",function (req, res, next) {
         
     // Error MiddleWare for multer file upload, so if any
     // error occurs, the image would not be uploaded!
-    upload(req,res,function(err) {
-  
+    upload(req,res,function(err, ...a) {
+      console.log('a', a)
         if(err) {
   
             // ERROR occurred (here it can be occurred due
