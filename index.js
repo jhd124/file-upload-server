@@ -58,8 +58,8 @@ app.post("/upload_file",function (req, res, next) {
         
     // Error MiddleWare for multer file upload, so if any
     // error occurs, the image would not be uploaded!
-    upload(req,res,function(err, ...a) {
-      console.log('a', a)
+    upload(req,res,function(err) {
+  
         if(err) {
   
             // ERROR occurred (here it can be occurred due
@@ -68,9 +68,9 @@ app.post("/upload_file",function (req, res, next) {
             res.send(err)
         }
         else {
-  
+        	console.log(req.file.filename)
             // SUCCESS, image successfully uploaded
-            res.send("Success, Image uploaded!")
+          res.send({status: 'success', filepath: `https://www.laojing.cc/service/uploads/${req.file.filename}`})
         }
     })
 })
